@@ -1,0 +1,1405 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="QMSModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Audit">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Description" Type="varchar" MaxLength="500" Nullable="false" />
+          <Property Name="Reference" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="AuditTypeID" Type="int" Nullable="false" />
+          <Property Name="CompanyID" Type="int" Nullable="false" />
+          <Property Name="IsInternal" Type="bit" Nullable="false" />
+          <Property Name="AuditorID" Type="int" />
+          <Property Name="AuditorContactID" Type="int" />
+          <Property Name="InternalAuditorID" Type="int" />
+          <Property Name="CreatedDate" Type="date" Nullable="false" />
+          <Property Name="CreatedByID" Type="int" Nullable="false" />
+          <Property Name="ModifiedDate" Type="date" Nullable="false" />
+          <Property Name="ModifiedByID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AuditFindings">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AuditID" Type="int" Nullable="false" />
+          <Property Name="NonConformanceID" Type="int" Nullable="false" />
+          <Property Name="SeverityID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AuditItem">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AuditID" Type="int" Nullable="false" />
+          <Property Name="Time" Type="datetime" Nullable="false" />
+          <Property Name="Task" Type="varchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Auditor">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="int" Nullable="false" />
+          <Property Name="Tel" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="Fax" Type="varchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AuditorContact">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AuditorID" Type="int" Nullable="false" />
+          <Property Name="FirstName" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="Surname" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="Email" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="Tel" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="Fax" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="MobileNumber" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="Position" Type="varchar" MaxLength="30" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Cell">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="DepartmentID" Type="int" Nullable="false" />
+          <Property Name="Code" Type="varchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CertificationElement">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="CertificationTypeID" Type="int" Nullable="false" />
+          <Property Name="ParentID" Type="int" />
+          <Property Name="Description" Type="varchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CertificationType">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Department">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="CompanyID" Type="int" Nullable="false" />
+          <Property Name="Code" Type="varchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Employee">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Firstname" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Surname" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Email" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="TelNo" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="FaxNo" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="MobileNo" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="DateEmployed" Type="datetime" Nullable="false" />
+          <Property Name="CompanyID" Type="int" />
+          <Property Name="SuperiorID" Type="int" />
+          <Property Name="UserID" Type="uniqueidentifier" />
+          <Property Name="isActive" Type="bit" Nullable="false" />
+          <Property Name="EmployeeTypeID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Lookup">
+          <Key>
+            <PropertyRef Name="LookupID" />
+          </Key>
+          <Property Name="LookupID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="LookupTypeID" Type="int" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Code" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="GroupID" Type="int" />
+        </EntityType>
+        <EntityType Name="LookupType">
+          <Key>
+            <PropertyRef Name="LookupTypeID" />
+          </Key>
+          <Property Name="LookupTypeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Code" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="IsSystemLookup" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ProcessAudit">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Supplier">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ContactPerson" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="TelNo" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="FaxNo" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="MobileNo" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Email" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="CertificationTypeID" Type="int" Nullable="false" />
+          <Property Name="CertificationExpiryDate" Type="datetime" Nullable="false" />
+          <Property Name="VendorNo" Type="varchar" MaxLength="20" />
+          <Property Name="CompanyID" Type="int" />
+          <Property Name="DateCaptured" Type="datetime" Nullable="false" />
+          <Property Name="SupplierTypeID" Type="int" Nullable="false" />
+          <Property Name="Active" Type="bit" Nullable="false" />
+          <Property Name="CategoryID" Type="int" Nullable="false" />
+          <Property Name="CurrencyID" Type="int" Nullable="false" />
+          <Property Name="NegotiatedBy" Type="int" Nullable="false" />
+          <Property Name="Comments" Type="varchar(max)" Nullable="false" />
+          <Property Name="IsPrimary" Type="bit" Nullable="false" />
+          <Property Name="IsComplete" Type="bit" Nullable="false" />
+          <Property Name="Rating" Type="int" Nullable="false" />
+          <Property Name="MSDS" Type="int" Nullable="false" />
+          <Property Name="BackupSupplierID" Type="int" />
+        </EntityType>
+        <EntityType Name="SupplierAudit">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="SupplierID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SystemAudit">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="CertificationElementID" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Audit_Auditor">
+          <End Role="Auditor" Type="Self.Auditor" Multiplicity="0..1" />
+          <End Role="Audit" Type="Self.Audit" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Auditor">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Audit">
+              <PropertyRef Name="AuditorID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Audit_AuditorContact">
+          <End Role="AuditorContact" Type="Self.AuditorContact" Multiplicity="0..1" />
+          <End Role="Audit" Type="Self.Audit" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AuditorContact">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Audit">
+              <PropertyRef Name="AuditorContactID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Audit_Lookup">
+          <End Role="Lookup" Type="Self.Lookup" Multiplicity="1" />
+          <End Role="Audit" Type="Self.Audit" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Lookup">
+              <PropertyRef Name="LookupID" />
+            </Principal>
+            <Dependent Role="Audit">
+              <PropertyRef Name="AuditTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AuditFindings_Audit">
+          <End Role="Audit" Type="Self.Audit" Multiplicity="1" />
+          <End Role="AuditFindings" Type="Self.AuditFindings" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Audit">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="AuditFindings">
+              <PropertyRef Name="AuditID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AuditFindings_Lookup">
+          <End Role="Lookup" Type="Self.Lookup" Multiplicity="1" />
+          <End Role="AuditFindings" Type="Self.AuditFindings" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Lookup">
+              <PropertyRef Name="LookupID" />
+            </Principal>
+            <Dependent Role="AuditFindings">
+              <PropertyRef Name="SeverityID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AuditItem_Audit">
+          <End Role="Audit" Type="Self.Audit" Multiplicity="1" />
+          <End Role="AuditItem" Type="Self.AuditItem" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Audit">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="AuditItem">
+              <PropertyRef Name="AuditID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AuditorContact_Auditor">
+          <End Role="Auditor" Type="Self.Auditor" Multiplicity="1" />
+          <End Role="AuditorContact" Type="Self.AuditorContact" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Auditor">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="AuditorContact">
+              <PropertyRef Name="AuditorID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Category_Lookup">
+          <End Role="Lookup" Type="Self.Lookup" Multiplicity="1" />
+          <End Role="Supplier" Type="Self.Supplier" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Lookup">
+              <PropertyRef Name="LookupID" />
+            </Principal>
+            <Dependent Role="Supplier">
+              <PropertyRef Name="CategoryID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Cell_Department">
+          <End Role="Department" Type="Self.Department" Multiplicity="1" />
+          <End Role="Cell" Type="Self.Cell" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Department">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Cell">
+              <PropertyRef Name="DepartmentID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CertificationElement_CertificationElement">
+          <End Role="CertificationElement" Type="Self.CertificationElement" Multiplicity="0..1" />
+          <End Role="CertificationElement1" Type="Self.CertificationElement" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CertificationElement">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="CertificationElement1">
+              <PropertyRef Name="ParentID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CertificationElement_CertificationType">
+          <End Role="CertificationType" Type="Self.CertificationType" Multiplicity="1" />
+          <End Role="CertificationElement" Type="Self.CertificationElement" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CertificationType">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="CertificationElement">
+              <PropertyRef Name="CertificationTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Currency_Lookup">
+          <End Role="Lookup" Type="Self.Lookup" Multiplicity="1" />
+          <End Role="Supplier" Type="Self.Supplier" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Lookup">
+              <PropertyRef Name="LookupID" />
+            </Principal>
+            <Dependent Role="Supplier">
+              <PropertyRef Name="CurrencyID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Employee_Employee">
+          <End Role="Employee" Type="Self.Employee" Multiplicity="0..1" />
+          <End Role="Employee1" Type="Self.Employee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Employee1">
+              <PropertyRef Name="SuperiorID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Employee_Lookup">
+          <End Role="Lookup" Type="Self.Lookup" Multiplicity="1" />
+          <End Role="Employee" Type="Self.Employee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Lookup">
+              <PropertyRef Name="LookupID" />
+            </Principal>
+            <Dependent Role="Employee">
+              <PropertyRef Name="EmployeeTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Lookup_LookupType">
+          <End Role="LookupType" Type="Self.LookupType" Multiplicity="1" />
+          <End Role="Lookup" Type="Self.Lookup" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LookupType">
+              <PropertyRef Name="LookupTypeID" />
+            </Principal>
+            <Dependent Role="Lookup">
+              <PropertyRef Name="LookupTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Msds_Lookup">
+          <End Role="Lookup" Type="Self.Lookup" Multiplicity="1" />
+          <End Role="Supplier" Type="Self.Supplier" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Lookup">
+              <PropertyRef Name="LookupID" />
+            </Principal>
+            <Dependent Role="Supplier">
+              <PropertyRef Name="MSDS" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_NegotiatedBy_Lookup">
+          <End Role="Lookup" Type="Self.Lookup" Multiplicity="1" />
+          <End Role="Supplier" Type="Self.Supplier" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Lookup">
+              <PropertyRef Name="LookupID" />
+            </Principal>
+            <Dependent Role="Supplier">
+              <PropertyRef Name="NegotiatedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProcessAudit_Audit">
+          <End Role="Audit" Type="Self.Audit" Multiplicity="1" />
+          <End Role="ProcessAudit" Type="Self.ProcessAudit" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Audit">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ProcessAudit">
+              <PropertyRef Name="ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Rating_Lookup">
+          <End Role="Lookup" Type="Self.Lookup" Multiplicity="1" />
+          <End Role="Supplier" Type="Self.Supplier" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Lookup">
+              <PropertyRef Name="LookupID" />
+            </Principal>
+            <Dependent Role="Supplier">
+              <PropertyRef Name="Rating" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Supplier_CertificationType">
+          <End Role="CertificationType" Type="Self.CertificationType" Multiplicity="1" />
+          <End Role="Supplier" Type="Self.Supplier" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CertificationType">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Supplier">
+              <PropertyRef Name="CertificationTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Supplier_Lookup">
+          <End Role="Lookup" Type="Self.Lookup" Multiplicity="1" />
+          <End Role="Supplier" Type="Self.Supplier" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Lookup">
+              <PropertyRef Name="LookupID" />
+            </Principal>
+            <Dependent Role="Supplier">
+              <PropertyRef Name="NegotiatedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Supplier_Supplier">
+          <End Role="Supplier" Type="Self.Supplier" Multiplicity="0..1" />
+          <End Role="Supplier1" Type="Self.Supplier" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Supplier">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Supplier1">
+              <PropertyRef Name="BackupSupplierID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SupplierAudit_Audit">
+          <End Role="Audit" Type="Self.Audit" Multiplicity="1" />
+          <End Role="SupplierAudit" Type="Self.SupplierAudit" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Audit">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="SupplierAudit">
+              <PropertyRef Name="ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SupplierType_Lookup">
+          <End Role="Lookup" Type="Self.Lookup" Multiplicity="1" />
+          <End Role="Supplier" Type="Self.Supplier" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Lookup">
+              <PropertyRef Name="LookupID" />
+            </Principal>
+            <Dependent Role="Supplier">
+              <PropertyRef Name="SupplierTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SystemAudit_Audit">
+          <End Role="Audit" Type="Self.Audit" Multiplicity="1" />
+          <End Role="SystemAudit" Type="Self.SystemAudit" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Audit">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="SystemAudit">
+              <PropertyRef Name="ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="QMSModelStoreContainer">
+          <EntitySet Name="Audit" EntityType="Self.Audit" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AuditFindings" EntityType="Self.AuditFindings" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AuditItem" EntityType="Self.AuditItem" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Auditor" EntityType="Self.Auditor" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AuditorContact" EntityType="Self.AuditorContact" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Cell" EntityType="Self.Cell" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CertificationElement" EntityType="Self.CertificationElement" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CertificationType" EntityType="Self.CertificationType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Department" EntityType="Self.Department" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Employee" EntityType="Self.Employee" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Lookup" EntityType="Self.Lookup" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LookupType" EntityType="Self.LookupType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ProcessAudit" EntityType="Self.ProcessAudit" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Supplier" EntityType="Self.Supplier" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SupplierAudit" EntityType="Self.SupplierAudit" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SystemAudit" EntityType="Self.SystemAudit" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Audit_Auditor" Association="Self.FK_Audit_Auditor">
+            <End Role="Auditor" EntitySet="Auditor" />
+            <End Role="Audit" EntitySet="Audit" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Audit_AuditorContact" Association="Self.FK_Audit_AuditorContact">
+            <End Role="AuditorContact" EntitySet="AuditorContact" />
+            <End Role="Audit" EntitySet="Audit" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Audit_Lookup" Association="Self.FK_Audit_Lookup">
+            <End Role="Lookup" EntitySet="Lookup" />
+            <End Role="Audit" EntitySet="Audit" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AuditFindings_Audit" Association="Self.FK_AuditFindings_Audit">
+            <End Role="Audit" EntitySet="Audit" />
+            <End Role="AuditFindings" EntitySet="AuditFindings" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AuditFindings_Lookup" Association="Self.FK_AuditFindings_Lookup">
+            <End Role="Lookup" EntitySet="Lookup" />
+            <End Role="AuditFindings" EntitySet="AuditFindings" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AuditItem_Audit" Association="Self.FK_AuditItem_Audit">
+            <End Role="Audit" EntitySet="Audit" />
+            <End Role="AuditItem" EntitySet="AuditItem" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AuditorContact_Auditor" Association="Self.FK_AuditorContact_Auditor">
+            <End Role="Auditor" EntitySet="Auditor" />
+            <End Role="AuditorContact" EntitySet="AuditorContact" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Category_Lookup" Association="Self.FK_Category_Lookup">
+            <End Role="Lookup" EntitySet="Lookup" />
+            <End Role="Supplier" EntitySet="Supplier" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Cell_Department" Association="Self.FK_Cell_Department">
+            <End Role="Department" EntitySet="Department" />
+            <End Role="Cell" EntitySet="Cell" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CertificationElement_CertificationElement" Association="Self.FK_CertificationElement_CertificationElement">
+            <End Role="CertificationElement" EntitySet="CertificationElement" />
+            <End Role="CertificationElement1" EntitySet="CertificationElement" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CertificationElement_CertificationType" Association="Self.FK_CertificationElement_CertificationType">
+            <End Role="CertificationType" EntitySet="CertificationType" />
+            <End Role="CertificationElement" EntitySet="CertificationElement" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Currency_Lookup" Association="Self.FK_Currency_Lookup">
+            <End Role="Lookup" EntitySet="Lookup" />
+            <End Role="Supplier" EntitySet="Supplier" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Employee_Employee" Association="Self.FK_Employee_Employee">
+            <End Role="Employee" EntitySet="Employee" />
+            <End Role="Employee1" EntitySet="Employee" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Employee_Lookup" Association="Self.FK_Employee_Lookup">
+            <End Role="Lookup" EntitySet="Lookup" />
+            <End Role="Employee" EntitySet="Employee" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Lookup_LookupType" Association="Self.FK_Lookup_LookupType">
+            <End Role="LookupType" EntitySet="LookupType" />
+            <End Role="Lookup" EntitySet="Lookup" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Msds_Lookup" Association="Self.FK_Msds_Lookup">
+            <End Role="Lookup" EntitySet="Lookup" />
+            <End Role="Supplier" EntitySet="Supplier" />
+          </AssociationSet>
+          <AssociationSet Name="FK_NegotiatedBy_Lookup" Association="Self.FK_NegotiatedBy_Lookup">
+            <End Role="Lookup" EntitySet="Lookup" />
+            <End Role="Supplier" EntitySet="Supplier" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProcessAudit_Audit" Association="Self.FK_ProcessAudit_Audit">
+            <End Role="Audit" EntitySet="Audit" />
+            <End Role="ProcessAudit" EntitySet="ProcessAudit" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Rating_Lookup" Association="Self.FK_Rating_Lookup">
+            <End Role="Lookup" EntitySet="Lookup" />
+            <End Role="Supplier" EntitySet="Supplier" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Supplier_CertificationType" Association="Self.FK_Supplier_CertificationType">
+            <End Role="CertificationType" EntitySet="CertificationType" />
+            <End Role="Supplier" EntitySet="Supplier" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Supplier_Lookup" Association="Self.FK_Supplier_Lookup">
+            <End Role="Lookup" EntitySet="Lookup" />
+            <End Role="Supplier" EntitySet="Supplier" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Supplier_Supplier" Association="Self.FK_Supplier_Supplier">
+            <End Role="Supplier" EntitySet="Supplier" />
+            <End Role="Supplier1" EntitySet="Supplier" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SupplierAudit_Audit" Association="Self.FK_SupplierAudit_Audit">
+            <End Role="Audit" EntitySet="Audit" />
+            <End Role="SupplierAudit" EntitySet="SupplierAudit" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SupplierType_Lookup" Association="Self.FK_SupplierType_Lookup">
+            <End Role="Lookup" EntitySet="Lookup" />
+            <End Role="Supplier" EntitySet="Supplier" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SystemAudit_Audit" Association="Self.FK_SystemAudit_Audit">
+            <End Role="Audit" EntitySet="Audit" />
+            <End Role="SystemAudit" EntitySet="SystemAudit" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="QMSModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="Entities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="AuditEntities" EntityType="QMSModel.AuditEntity" />
+          <EntitySet Name="AuditItems" EntityType="QMSModel.AuditItem" />
+          <EntitySet Name="Cells" EntityType="QMSModel.Cell" />
+          <EntitySet Name="CertificationTypes" EntityType="QMSModel.CertificationType" />
+          <EntitySet Name="Employees" EntityType="QMSModel.Employee" />
+          <EntitySet Name="Lookups" EntityType="QMSModel.Lookup" />
+          <EntitySet Name="Suppliers" EntityType="QMSModel.Supplier" />
+          <AssociationSet Name="FK_Audit_Lookup" Association="QMSModel.FK_Audit_Lookup">
+            <End Role="Lookup" EntitySet="Lookups" />
+            <End Role="Audit" EntitySet="AuditEntities" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AuditItem_Audit" Association="QMSModel.FK_AuditItem_Audit">
+            <End Role="Audit" EntitySet="AuditEntities" />
+            <End Role="AuditItem" EntitySet="AuditItems" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Supplier_CertificationType" Association="QMSModel.FK_Supplier_CertificationType">
+            <End Role="CertificationType" EntitySet="CertificationTypes" />
+            <End Role="Supplier" EntitySet="Suppliers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Employee_Employee" Association="QMSModel.FK_Employee_Employee">
+            <End Role="Employee" EntitySet="Employees" />
+            <End Role="Employee1" EntitySet="Employees" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Employee_Lookup" Association="QMSModel.FK_Employee_Lookup">
+            <End Role="Lookup" EntitySet="Lookups" />
+            <End Role="Employee" EntitySet="Employees" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Category_Lookup" Association="QMSModel.FK_Category_Lookup">
+            <End Role="Lookup" EntitySet="Lookups" />
+            <End Role="Supplier" EntitySet="Suppliers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Currency_Lookup" Association="QMSModel.FK_Currency_Lookup">
+            <End Role="Lookup" EntitySet="Lookups" />
+            <End Role="Supplier" EntitySet="Suppliers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Msds_Lookup" Association="QMSModel.FK_Msds_Lookup">
+            <End Role="Lookup" EntitySet="Lookups" />
+            <End Role="Supplier" EntitySet="Suppliers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_NegotiatedBy_Lookup" Association="QMSModel.FK_NegotiatedBy_Lookup">
+            <End Role="Lookup" EntitySet="Lookups" />
+            <End Role="Supplier" EntitySet="Suppliers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Rating_Lookup" Association="QMSModel.FK_Rating_Lookup">
+            <End Role="Lookup" EntitySet="Lookups" />
+            <End Role="Supplier" EntitySet="Suppliers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Supplier_Lookup" Association="QMSModel.FK_Supplier_Lookup">
+            <End Role="Lookup" EntitySet="Lookups" />
+            <End Role="Supplier" EntitySet="Suppliers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SupplierType_Lookup" Association="QMSModel.FK_SupplierType_Lookup">
+            <End Role="Lookup" EntitySet="Lookups" />
+            <End Role="Supplier" EntitySet="Suppliers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Supplier_Supplier" Association="QMSModel.FK_Supplier_Supplier">
+            <End Role="Supplier" EntitySet="Suppliers" />
+            <End Role="Supplier1" EntitySet="Suppliers" />
+          </AssociationSet>
+          <EntitySet Name="AuditFindings" EntityType="QMSModel.AuditFinding" />
+          <EntitySet Name="Auditors" EntityType="QMSModel.Auditor" />
+          <EntitySet Name="AuditorContacts" EntityType="QMSModel.AuditorContact" />
+          <AssociationSet Name="FK_Audit_Auditor" Association="QMSModel.FK_Audit_Auditor">
+            <End Role="Auditor" EntitySet="Auditors" />
+            <End Role="Audit" EntitySet="AuditEntities" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Audit_AuditorContact" Association="QMSModel.FK_Audit_AuditorContact">
+            <End Role="AuditorContact" EntitySet="AuditorContacts" />
+            <End Role="Audit" EntitySet="AuditEntities" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AuditFindings_Audit" Association="QMSModel.FK_AuditFindings_Audit">
+            <End Role="Audit" EntitySet="AuditEntities" />
+            <End Role="AuditFinding" EntitySet="AuditFindings" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AuditFindings_Lookup" Association="QMSModel.FK_AuditFindings_Lookup">
+            <End Role="Lookup" EntitySet="Lookups" />
+            <End Role="AuditFinding" EntitySet="AuditFindings" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AuditorContact_Auditor" Association="QMSModel.FK_AuditorContact_Auditor">
+            <End Role="Auditor" EntitySet="Auditors" />
+            <End Role="AuditorContact" EntitySet="AuditorContacts" />
+          </AssociationSet>
+          <EntitySet Name="LookupTypes" EntityType="QMSModel.LookupType" />
+          <AssociationSet Name="FK_Lookup_LookupType" Association="QMSModel.FK_Lookup_LookupType">
+            <End Role="LookupType" EntitySet="LookupTypes" />
+            <End Role="Lookup" EntitySet="Lookups" />
+          </AssociationSet>
+          <EntitySet Name="CertificationElements" EntityType="QMSModel.CertificationElement" />
+          <EntitySet Name="Departments" EntityType="QMSModel.Department" />
+          <AssociationSet Name="FK_Cell_Department" Association="QMSModel.FK_Cell_Department">
+            <End Role="Department" EntitySet="Departments" />
+            <End Role="Cell" EntitySet="Cells" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CertificationElement_CertificationElement" Association="QMSModel.FK_CertificationElement_CertificationElement">
+            <End Role="CertificationElement" EntitySet="CertificationElements" />
+            <End Role="CertificationElement1" EntitySet="CertificationElements" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CertificationElement_CertificationType" Association="QMSModel.FK_CertificationElement_CertificationType">
+            <End Role="CertificationType" EntitySet="CertificationTypes" />
+            <End Role="CertificationElement" EntitySet="CertificationElements" />
+          </AssociationSet>
+          </EntityContainer>
+        <EntityType Name="AuditEntity" Abstract="true">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Description" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="Reference" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="AuditTypeID" Type="Int32" Nullable="false" />
+          <Property Name="CompanyID" Type="Int32" Nullable="false" />
+          <Property Name="IsInternal" Type="Boolean" Nullable="false" />
+          <Property Name="AuditorID" Type="Int32" />
+          <Property Name="AuditorContactID" Type="Int32" />
+          <Property Name="InternalAuditorID" Type="Int32" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="CreatedByID" Type="Int32" Nullable="false" />
+          <Property Name="ModifiedDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="ModifiedByID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Lookup" Relationship="QMSModel.FK_Audit_Lookup" FromRole="Audit" ToRole="Lookup" />
+          <NavigationProperty Name="AuditItems" Relationship="QMSModel.FK_AuditItem_Audit" FromRole="Audit" ToRole="AuditItem" />
+          <NavigationProperty Name="Auditor" Relationship="QMSModel.FK_Audit_Auditor" FromRole="Audit" ToRole="Auditor" />
+          <NavigationProperty Name="AuditorContact" Relationship="QMSModel.FK_Audit_AuditorContact" FromRole="Audit" ToRole="AuditorContact" />
+          <NavigationProperty Name="AuditFindings" Relationship="QMSModel.FK_AuditFindings_Audit" FromRole="Audit" ToRole="AuditFinding" />
+        </EntityType>
+        <EntityType Name="AuditItem">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AuditID" Type="Int32" Nullable="false" />
+          <Property Name="Time" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Task" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Audit" Relationship="QMSModel.FK_AuditItem_Audit" FromRole="AuditItem" ToRole="Audit" />
+        </EntityType>
+        <EntityType Name="Cell">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="DepartmentID" Type="Int32" Nullable="false" />
+          <Property Name="Code" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Department" Relationship="QMSModel.FK_Cell_Department" FromRole="Cell" ToRole="Department" />
+        </EntityType>
+        <EntityType Name="CertificationType">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Suppliers" Relationship="QMSModel.FK_Supplier_CertificationType" FromRole="CertificationType" ToRole="Supplier" />
+          <NavigationProperty Name="CertificationElements" Relationship="QMSModel.FK_CertificationElement_CertificationType" FromRole="CertificationType" ToRole="CertificationElement" />
+        </EntityType>
+        <EntityType Name="Employee">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Firstname" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Surname" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Email" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="TelNo" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="FaxNo" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="MobileNo" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="DateEmployed" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="CompanyID" Type="Int32" />
+          <Property Name="SuperiorID" Type="Int32" />
+          <Property Name="UserID" Type="Guid" />
+          <Property Name="isActive" Type="Boolean" Nullable="false" />
+          <Property Name="EmployeeTypeID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Employee1" Relationship="QMSModel.FK_Employee_Employee" FromRole="Employee" ToRole="Employee1" />
+          <NavigationProperty Name="Employee2" Relationship="QMSModel.FK_Employee_Employee" FromRole="Employee1" ToRole="Employee" />
+          <NavigationProperty Name="Lookup" Relationship="QMSModel.FK_Employee_Lookup" FromRole="Employee" ToRole="Lookup" />
+        </EntityType>
+        <EntityType Name="Lookup">
+          <Key>
+            <PropertyRef Name="LookupID" />
+          </Key>
+          <Property Name="LookupID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="LookupTypeID" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Code" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="GroupID" Type="Int32" />
+          <NavigationProperty Name="Audits" Relationship="QMSModel.FK_Audit_Lookup" FromRole="Lookup" ToRole="Audit" />
+          <NavigationProperty Name="Employees" Relationship="QMSModel.FK_Employee_Lookup" FromRole="Lookup" ToRole="Employee" />
+          <NavigationProperty Name="Suppliers" Relationship="QMSModel.FK_Category_Lookup" FromRole="Lookup" ToRole="Supplier" />
+          <NavigationProperty Name="Suppliers1" Relationship="QMSModel.FK_Currency_Lookup" FromRole="Lookup" ToRole="Supplier" />
+          <NavigationProperty Name="Suppliers2" Relationship="QMSModel.FK_Msds_Lookup" FromRole="Lookup" ToRole="Supplier" />
+          <NavigationProperty Name="Suppliers3" Relationship="QMSModel.FK_NegotiatedBy_Lookup" FromRole="Lookup" ToRole="Supplier" />
+          <NavigationProperty Name="Suppliers4" Relationship="QMSModel.FK_Rating_Lookup" FromRole="Lookup" ToRole="Supplier" />
+          <NavigationProperty Name="Suppliers5" Relationship="QMSModel.FK_Supplier_Lookup" FromRole="Lookup" ToRole="Supplier" />
+          <NavigationProperty Name="Suppliers6" Relationship="QMSModel.FK_SupplierType_Lookup" FromRole="Lookup" ToRole="Supplier" />
+          <NavigationProperty Name="AuditFindings" Relationship="QMSModel.FK_AuditFindings_Lookup" FromRole="Lookup" ToRole="AuditFinding" />
+          <NavigationProperty Name="LookupType" Relationship="QMSModel.FK_Lookup_LookupType" FromRole="Lookup" ToRole="LookupType" />
+        </EntityType>
+        <EntityType Name="ProcessAudit" BaseType="QMSModel.AuditEntity">
+        </EntityType>
+        <EntityType Name="Supplier">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ContactPerson" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="TelNo" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="FaxNo" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="MobileNo" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Email" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CertificationTypeID" Type="Int32" Nullable="false" />
+          <Property Name="CertificationExpiryDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="VendorNo" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="CompanyID" Type="Int32" />
+          <Property Name="DateCaptured" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="SupplierTypeID" Type="Int32" Nullable="false" />
+          <Property Name="Active" Type="Boolean" Nullable="false" />
+          <Property Name="CategoryID" Type="Int32" Nullable="false" />
+          <Property Name="CurrencyID" Type="Int32" Nullable="false" />
+          <Property Name="NegotiatedBy" Type="Int32" Nullable="false" />
+          <Property Name="Comments" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="IsPrimary" Type="Boolean" Nullable="false" />
+          <Property Name="IsComplete" Type="Boolean" Nullable="false" />
+          <Property Name="Rating" Type="Int32" Nullable="false" />
+          <Property Name="MSDS" Type="Int32" Nullable="false" />
+          <Property Name="BackupSupplierID" Type="Int32" />
+          <NavigationProperty Name="CertificationType" Relationship="QMSModel.FK_Supplier_CertificationType" FromRole="Supplier" ToRole="CertificationType" />
+          <NavigationProperty Name="Lookup" Relationship="QMSModel.FK_Category_Lookup" FromRole="Supplier" ToRole="Lookup" />
+          <NavigationProperty Name="Lookup1" Relationship="QMSModel.FK_Currency_Lookup" FromRole="Supplier" ToRole="Lookup" />
+          <NavigationProperty Name="Lookup2" Relationship="QMSModel.FK_Msds_Lookup" FromRole="Supplier" ToRole="Lookup" />
+          <NavigationProperty Name="Lookup3" Relationship="QMSModel.FK_NegotiatedBy_Lookup" FromRole="Supplier" ToRole="Lookup" />
+          <NavigationProperty Name="Lookup4" Relationship="QMSModel.FK_Rating_Lookup" FromRole="Supplier" ToRole="Lookup" />
+          <NavigationProperty Name="Lookup5" Relationship="QMSModel.FK_Supplier_Lookup" FromRole="Supplier" ToRole="Lookup" />
+          <NavigationProperty Name="Lookup6" Relationship="QMSModel.FK_SupplierType_Lookup" FromRole="Supplier" ToRole="Lookup" />
+          <NavigationProperty Name="Supplier1" Relationship="QMSModel.FK_Supplier_Supplier" FromRole="Supplier" ToRole="Supplier1" />
+          <NavigationProperty Name="Supplier2" Relationship="QMSModel.FK_Supplier_Supplier" FromRole="Supplier1" ToRole="Supplier" />
+        </EntityType>
+        <EntityType Name="SupplierAudit" BaseType="QMSModel.AuditEntity">
+          <Property Name="SupplierID" Type="Int32" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Audit_Lookup">
+          <End Type="QMSModel.Lookup" Role="Lookup" Multiplicity="1" />
+          <End Type="QMSModel.AuditEntity" Role="Audit" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Lookup">
+              <PropertyRef Name="LookupID" />
+            </Principal>
+            <Dependent Role="Audit">
+              <PropertyRef Name="AuditTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AuditItem_Audit">
+          <End Type="QMSModel.AuditEntity" Role="Audit" Multiplicity="1" />
+          <End Type="QMSModel.AuditItem" Role="AuditItem" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Audit">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="AuditItem">
+              <PropertyRef Name="AuditID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Supplier_CertificationType">
+          <End Type="QMSModel.CertificationType" Role="CertificationType" Multiplicity="1" />
+          <End Type="QMSModel.Supplier" Role="Supplier" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CertificationType">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Supplier">
+              <PropertyRef Name="CertificationTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Employee_Employee">
+          <End Type="QMSModel.Employee" Role="Employee" Multiplicity="0..1" />
+          <End Type="QMSModel.Employee" Role="Employee1" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Employee1">
+              <PropertyRef Name="SuperiorID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Employee_Lookup">
+          <End Type="QMSModel.Lookup" Role="Lookup" Multiplicity="1" />
+          <End Type="QMSModel.Employee" Role="Employee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Lookup">
+              <PropertyRef Name="LookupID" />
+            </Principal>
+            <Dependent Role="Employee">
+              <PropertyRef Name="EmployeeTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Category_Lookup">
+          <End Type="QMSModel.Lookup" Role="Lookup" Multiplicity="1" />
+          <End Type="QMSModel.Supplier" Role="Supplier" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Lookup">
+              <PropertyRef Name="LookupID" />
+            </Principal>
+            <Dependent Role="Supplier">
+              <PropertyRef Name="CategoryID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Currency_Lookup">
+          <End Type="QMSModel.Lookup" Role="Lookup" Multiplicity="1" />
+          <End Type="QMSModel.Supplier" Role="Supplier" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Lookup">
+              <PropertyRef Name="LookupID" />
+            </Principal>
+            <Dependent Role="Supplier">
+              <PropertyRef Name="CurrencyID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Msds_Lookup">
+          <End Type="QMSModel.Lookup" Role="Lookup" Multiplicity="1" />
+          <End Type="QMSModel.Supplier" Role="Supplier" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Lookup">
+              <PropertyRef Name="LookupID" />
+            </Principal>
+            <Dependent Role="Supplier">
+              <PropertyRef Name="MSDS" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_NegotiatedBy_Lookup">
+          <End Type="QMSModel.Lookup" Role="Lookup" Multiplicity="1" />
+          <End Type="QMSModel.Supplier" Role="Supplier" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Lookup">
+              <PropertyRef Name="LookupID" />
+            </Principal>
+            <Dependent Role="Supplier">
+              <PropertyRef Name="NegotiatedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Rating_Lookup">
+          <End Type="QMSModel.Lookup" Role="Lookup" Multiplicity="1" />
+          <End Type="QMSModel.Supplier" Role="Supplier" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Lookup">
+              <PropertyRef Name="LookupID" />
+            </Principal>
+            <Dependent Role="Supplier">
+              <PropertyRef Name="Rating" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Supplier_Lookup">
+          <End Type="QMSModel.Lookup" Role="Lookup" Multiplicity="1" />
+          <End Type="QMSModel.Supplier" Role="Supplier" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Lookup">
+              <PropertyRef Name="LookupID" />
+            </Principal>
+            <Dependent Role="Supplier">
+              <PropertyRef Name="NegotiatedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SupplierType_Lookup">
+          <End Type="QMSModel.Lookup" Role="Lookup" Multiplicity="1" />
+          <End Type="QMSModel.Supplier" Role="Supplier" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Lookup">
+              <PropertyRef Name="LookupID" />
+            </Principal>
+            <Dependent Role="Supplier">
+              <PropertyRef Name="SupplierTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Supplier_Supplier">
+          <End Type="QMSModel.Supplier" Role="Supplier" Multiplicity="0..1" />
+          <End Type="QMSModel.Supplier" Role="Supplier1" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Supplier">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Supplier1">
+              <PropertyRef Name="BackupSupplierID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="AuditFinding">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AuditID" Type="Int32" Nullable="false" />
+          <Property Name="NonConformanceID" Type="Int32" Nullable="false" />
+          <Property Name="SeverityID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Audit" Relationship="QMSModel.FK_AuditFindings_Audit" FromRole="AuditFinding" ToRole="Audit" />
+          <NavigationProperty Name="Lookup" Relationship="QMSModel.FK_AuditFindings_Lookup" FromRole="AuditFinding" ToRole="Lookup" />
+        </EntityType>
+        <EntityType Name="Auditor">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="Int32" Nullable="false" />
+          <Property Name="Tel" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Fax" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Audits" Relationship="QMSModel.FK_Audit_Auditor" FromRole="Auditor" ToRole="Audit" />
+          <NavigationProperty Name="AuditorContacts" Relationship="QMSModel.FK_AuditorContact_Auditor" FromRole="Auditor" ToRole="AuditorContact" />
+        </EntityType>
+        <EntityType Name="AuditorContact">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AuditorID" Type="Int32" Nullable="false" />
+          <Property Name="FirstName" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="Surname" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="Email" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="Tel" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Fax" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="MobileNumber" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Position" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Audits" Relationship="QMSModel.FK_Audit_AuditorContact" FromRole="AuditorContact" ToRole="Audit" />
+          <NavigationProperty Name="Auditor" Relationship="QMSModel.FK_AuditorContact_Auditor" FromRole="AuditorContact" ToRole="Auditor" />
+        </EntityType>
+        <Association Name="FK_Audit_Auditor">
+          <End Type="QMSModel.Auditor" Role="Auditor" Multiplicity="0..1" />
+          <End Type="QMSModel.AuditEntity" Role="Audit" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Auditor">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Audit">
+              <PropertyRef Name="AuditorID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Audit_AuditorContact">
+          <End Type="QMSModel.AuditorContact" Role="AuditorContact" Multiplicity="0..1" />
+          <End Type="QMSModel.AuditEntity" Role="Audit" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AuditorContact">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Audit">
+              <PropertyRef Name="AuditorContactID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AuditFindings_Audit">
+          <End Type="QMSModel.AuditEntity" Role="Audit" Multiplicity="1" />
+          <End Type="QMSModel.AuditFinding" Role="AuditFinding" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Audit">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="AuditFinding">
+              <PropertyRef Name="AuditID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AuditFindings_Lookup">
+          <End Type="QMSModel.Lookup" Role="Lookup" Multiplicity="1" />
+          <End Type="QMSModel.AuditFinding" Role="AuditFinding" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Lookup">
+              <PropertyRef Name="LookupID" />
+            </Principal>
+            <Dependent Role="AuditFinding">
+              <PropertyRef Name="SeverityID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AuditorContact_Auditor">
+          <End Type="QMSModel.Auditor" Role="Auditor" Multiplicity="1" />
+          <End Type="QMSModel.AuditorContact" Role="AuditorContact" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Auditor">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="AuditorContact">
+              <PropertyRef Name="AuditorID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="LookupType">
+          <Key>
+            <PropertyRef Name="LookupTypeID" />
+          </Key>
+          <Property Name="LookupTypeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Code" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="IsSystemLookup" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Lookups" Relationship="QMSModel.FK_Lookup_LookupType" FromRole="LookupType" ToRole="Lookup" />
+        </EntityType>
+        <Association Name="FK_Lookup_LookupType">
+          <End Type="QMSModel.LookupType" Role="LookupType" Multiplicity="1" />
+          <End Type="QMSModel.Lookup" Role="Lookup" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LookupType">
+              <PropertyRef Name="LookupTypeID" />
+            </Principal>
+            <Dependent Role="Lookup">
+              <PropertyRef Name="LookupTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="CertificationElement">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="CertificationTypeID" Type="Int32" Nullable="false" />
+          <Property Name="ParentID" Type="Int32" />
+          <Property Name="Description" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="CertificationElement1" Relationship="QMSModel.FK_CertificationElement_CertificationElement" FromRole="CertificationElement" ToRole="CertificationElement1" />
+          <NavigationProperty Name="CertificationElement2" Relationship="QMSModel.FK_CertificationElement_CertificationElement" FromRole="CertificationElement1" ToRole="CertificationElement" />
+          <NavigationProperty Name="CertificationType" Relationship="QMSModel.FK_CertificationElement_CertificationType" FromRole="CertificationElement" ToRole="CertificationType" />
+        </EntityType>
+        <EntityType Name="Department">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CompanyID" Type="Int32" Nullable="false" />
+          <Property Name="Code" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Cells" Relationship="QMSModel.FK_Cell_Department" FromRole="Department" ToRole="Cell" />
+        </EntityType>
+        <Association Name="FK_Cell_Department">
+          <End Type="QMSModel.Department" Role="Department" Multiplicity="1" />
+          <End Type="QMSModel.Cell" Role="Cell" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Department">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Cell">
+              <PropertyRef Name="DepartmentID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CertificationElement_CertificationElement">
+          <End Type="QMSModel.CertificationElement" Role="CertificationElement" Multiplicity="0..1" />
+          <End Type="QMSModel.CertificationElement" Role="CertificationElement1" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CertificationElement">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="CertificationElement1">
+              <PropertyRef Name="ParentID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CertificationElement_CertificationType">
+          <End Type="QMSModel.CertificationType" Role="CertificationType" Multiplicity="1" />
+          <End Type="QMSModel.CertificationElement" Role="CertificationElement" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CertificationType">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="CertificationElement">
+              <PropertyRef Name="CertificationTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="SystemAudit" BaseType="QMSModel.AuditEntity">
+          <Property Name="CertificationElementID" Type="Int32" Nullable="false" />
+        </EntityType>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="QMSModelStoreContainer" CdmEntityContainer="Entities">
+          <EntitySetMapping Name="AuditEntities">
+            <EntityTypeMapping TypeName="IsTypeOf(QMSModel.AuditEntity)">
+              <MappingFragment StoreEntitySet="Audit">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Reference" ColumnName="Reference" />
+                <ScalarProperty Name="AuditTypeID" ColumnName="AuditTypeID" />
+                <ScalarProperty Name="CompanyID" ColumnName="CompanyID" />
+                <ScalarProperty Name="IsInternal" ColumnName="IsInternal" />
+                <ScalarProperty Name="AuditorID" ColumnName="AuditorID" />
+                <ScalarProperty Name="AuditorContactID" ColumnName="AuditorContactID" />
+                <ScalarProperty Name="InternalAuditorID" ColumnName="InternalAuditorID" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="CreatedByID" ColumnName="CreatedByID" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+                <ScalarProperty Name="ModifiedByID" ColumnName="ModifiedByID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+            <EntityTypeMapping TypeName="IsTypeOf(QMSModel.SupplierAudit)">
+              <MappingFragment StoreEntitySet="SupplierAudit">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="SupplierID" ColumnName="SupplierID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+            <EntityTypeMapping TypeName="IsTypeOf(QMSModel.ProcessAudit)">
+              <MappingFragment StoreEntitySet="ProcessAudit">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+            <EntityTypeMapping TypeName="IsTypeOf(QMSModel.SystemAudit)">
+              <MappingFragment StoreEntitySet="SystemAudit">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="CertificationElementID" ColumnName="CertificationElementID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AuditItems">
+            <EntityTypeMapping TypeName="QMSModel.AuditItem">
+              <MappingFragment StoreEntitySet="AuditItem">
+                <ScalarProperty Name="Task" ColumnName="Task" />
+                <ScalarProperty Name="Time" ColumnName="Time" />
+                <ScalarProperty Name="AuditID" ColumnName="AuditID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Cells">
+            <EntityTypeMapping TypeName="QMSModel.Cell">
+              <MappingFragment StoreEntitySet="Cell">
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="DepartmentID" ColumnName="DepartmentID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CertificationTypes">
+            <EntityTypeMapping TypeName="QMSModel.CertificationType">
+              <MappingFragment StoreEntitySet="CertificationType">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Employees">
+            <EntityTypeMapping TypeName="QMSModel.Employee">
+              <MappingFragment StoreEntitySet="Employee">
+                <ScalarProperty Name="EmployeeTypeID" ColumnName="EmployeeTypeID" />
+                <ScalarProperty Name="isActive" ColumnName="isActive" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="SuperiorID" ColumnName="SuperiorID" />
+                <ScalarProperty Name="CompanyID" ColumnName="CompanyID" />
+                <ScalarProperty Name="DateEmployed" ColumnName="DateEmployed" />
+                <ScalarProperty Name="MobileNo" ColumnName="MobileNo" />
+                <ScalarProperty Name="FaxNo" ColumnName="FaxNo" />
+                <ScalarProperty Name="TelNo" ColumnName="TelNo" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Surname" ColumnName="Surname" />
+                <ScalarProperty Name="Firstname" ColumnName="Firstname" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Lookups">
+            <EntityTypeMapping TypeName="QMSModel.Lookup">
+              <MappingFragment StoreEntitySet="Lookup">
+                <ScalarProperty Name="GroupID" ColumnName="GroupID" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="LookupTypeID" ColumnName="LookupTypeID" />
+                <ScalarProperty Name="LookupID" ColumnName="LookupID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Suppliers">
+            <EntityTypeMapping TypeName="QMSModel.Supplier">
+              <MappingFragment StoreEntitySet="Supplier">
+                <ScalarProperty Name="BackupSupplierID" ColumnName="BackupSupplierID" />
+                <ScalarProperty Name="MSDS" ColumnName="MSDS" />
+                <ScalarProperty Name="Rating" ColumnName="Rating" />
+                <ScalarProperty Name="IsComplete" ColumnName="IsComplete" />
+                <ScalarProperty Name="IsPrimary" ColumnName="IsPrimary" />
+                <ScalarProperty Name="Comments" ColumnName="Comments" />
+                <ScalarProperty Name="NegotiatedBy" ColumnName="NegotiatedBy" />
+                <ScalarProperty Name="CurrencyID" ColumnName="CurrencyID" />
+                <ScalarProperty Name="CategoryID" ColumnName="CategoryID" />
+                <ScalarProperty Name="Active" ColumnName="Active" />
+                <ScalarProperty Name="SupplierTypeID" ColumnName="SupplierTypeID" />
+                <ScalarProperty Name="DateCaptured" ColumnName="DateCaptured" />
+                <ScalarProperty Name="CompanyID" ColumnName="CompanyID" />
+                <ScalarProperty Name="VendorNo" ColumnName="VendorNo" />
+                <ScalarProperty Name="CertificationExpiryDate" ColumnName="CertificationExpiryDate" />
+                <ScalarProperty Name="CertificationTypeID" ColumnName="CertificationTypeID" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="MobileNo" ColumnName="MobileNo" />
+                <ScalarProperty Name="FaxNo" ColumnName="FaxNo" />
+                <ScalarProperty Name="TelNo" ColumnName="TelNo" />
+                <ScalarProperty Name="ContactPerson" ColumnName="ContactPerson" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AuditFindings">
+            <EntityTypeMapping TypeName="QMSModel.AuditFinding">
+              <MappingFragment StoreEntitySet="AuditFindings">
+                <ScalarProperty Name="SeverityID" ColumnName="SeverityID" />
+                <ScalarProperty Name="NonConformanceID" ColumnName="NonConformanceID" />
+                <ScalarProperty Name="AuditID" ColumnName="AuditID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Auditors">
+            <EntityTypeMapping TypeName="QMSModel.Auditor">
+              <MappingFragment StoreEntitySet="Auditor">
+                <ScalarProperty Name="Fax" ColumnName="Fax" />
+                <ScalarProperty Name="Tel" ColumnName="Tel" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AuditorContacts">
+            <EntityTypeMapping TypeName="QMSModel.AuditorContact">
+              <MappingFragment StoreEntitySet="AuditorContact">
+                <ScalarProperty Name="Position" ColumnName="Position" />
+                <ScalarProperty Name="MobileNumber" ColumnName="MobileNumber" />
+                <ScalarProperty Name="Fax" ColumnName="Fax" />
+                <ScalarProperty Name="Tel" ColumnName="Tel" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Surname" ColumnName="Surname" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="AuditorID" ColumnName="AuditorID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LookupTypes">
+            <EntityTypeMapping TypeName="QMSModel.LookupType">
+              <MappingFragment StoreEntitySet="LookupType">
+                <ScalarProperty Name="IsSystemLookup" ColumnName="IsSystemLookup" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="LookupTypeID" ColumnName="LookupTypeID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CertificationElements">
+            <EntityTypeMapping TypeName="QMSModel.CertificationElement">
+              <MappingFragment StoreEntitySet="CertificationElement">
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="ParentID" ColumnName="ParentID" />
+                <ScalarProperty Name="CertificationTypeID" ColumnName="CertificationTypeID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Departments">
+            <EntityTypeMapping TypeName="QMSModel.Department">
+              <MappingFragment StoreEntitySet="Department">
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="CompanyID" ColumnName="CompanyID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

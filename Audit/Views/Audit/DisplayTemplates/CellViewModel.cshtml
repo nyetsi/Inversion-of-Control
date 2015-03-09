@@ -1,0 +1,10 @@
+﻿@model Audit.Web.Models.CellViewModel
+
+<div class="checkbox">
+    @Html.LabelFor(model => model.Name)
+    @Html.CheckBoxFor(model => model.IsSelected, new {id = Model.ID })
+    @Html.ValidationMessageFor(model => model.IsSelected)
+</div>
+  
+  
+

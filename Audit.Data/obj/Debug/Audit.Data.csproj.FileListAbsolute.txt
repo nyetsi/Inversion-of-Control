@@ -1,0 +1,10 @@
+C:\_Development\Advance C#\Audit\Audit.Data\bin\Debug\Audit.Data.dll.config
+C:\_Development\Advance C#\Audit\Audit.Data\bin\Debug\Audit.Data.dll
+C:\_Development\Advance C#\Audit\Audit.Data\bin\Debug\Audit.Data.pdb
+C:\_Development\Advance C#\Audit\Audit.Data\bin\Debug\EntityFramework.dll
+C:\_Development\Advance C#\Audit\Audit.Data\bin\Debug\EntityFramework.SqlServer.dll
+C:\_Development\Advance C#\Audit\Audit.Data\bin\Debug\EntityFramework.xml
+C:\_Development\Advance C#\Audit\Audit.Data\bin\Debug\EntityFramework.SqlServer.xml
+C:\_Development\Advance C#\Audit\Audit.Data\obj\Debug\Audit.Data.dll
+C:\_Development\Advance C#\Audit\Audit.Data\obj\Debug\Audit.Data.pdb
+C:\_Development\Advance C#\Audit\Audit.Data\obj\Debug\Audit.Data.csprojResolveAssemblyReference.cache

@@ -1,0 +1,12 @@
+C:\_Development\Advance C#\Audit\BusinessLogic\obj\Debug\BusinessLogic.csprojResolveAssemblyReference.cache
+C:\_Development\Advance C#\Audit\BusinessLogic\bin\Debug\BusinessLogic.dll
+C:\_Development\Advance C#\Audit\BusinessLogic\bin\Debug\BusinessLogic.pdb
+C:\_Development\Advance C#\Audit\BusinessLogic\bin\Debug\Audit.Data.dll
+C:\_Development\Advance C#\Audit\BusinessLogic\bin\Debug\EntityFramework.dll
+C:\_Development\Advance C#\Audit\BusinessLogic\bin\Debug\Audit.Data.pdb
+C:\_Development\Advance C#\Audit\BusinessLogic\bin\Debug\EntityFramework.xml
+C:\_Development\Advance C#\Audit\BusinessLogic\obj\Debug\BusinessLogic.dll
+C:\_Development\Advance C#\Audit\BusinessLogic\obj\Debug\BusinessLogic.pdb
+C:\_Development\Advance C#\Audit\BusinessLogic\bin\Debug\BusinessLogic.dll.config
+C:\_Development\Advance C#\Audit\BusinessLogic\bin\Debug\EntityFramework.SqlServer.dll
+C:\_Development\Advance C#\Audit\BusinessLogic\bin\Debug\EntityFramework.SqlServer.xml

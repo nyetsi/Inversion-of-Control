@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="34ab758614f34975866271e59aaa4329" Name="Diagram1">
+        <EntityTypeShape EntityType="QMSModel.AuditEntity" Width="1.5" PointX="3" PointY="21.125" />
+        <EntityTypeShape EntityType="QMSModel.AuditItem" Width="1.5" PointX="5.25" PointY="25.75" />
+        <EntityTypeShape EntityType="QMSModel.Cell" Width="1.5" PointX="0.75" PointY="0.75" />
+        <EntityTypeShape EntityType="QMSModel.CertificationType" Width="1.5" PointX="3.75" PointY="11" />
+        <EntityTypeShape EntityType="QMSModel.Employee" Width="1.5" PointX="3" PointY="14.125" />
+        <EntityTypeShape EntityType="QMSModel.Lookup" Width="1.5" PointX="0.75" PointY="11" />
+        <EntityTypeShape EntityType="QMSModel.ProcessAudit" Width="1.5" PointX="5.25" PointY="23.625" />
+        <EntityTypeShape EntityType="QMSModel.Supplier" Width="1.5" PointX="6" PointY="9.125" />
+        <EntityTypeShape EntityType="QMSModel.SupplierAudit" Width="1.5" PointX="6.5" PointY="21.25" />
+        <AssociationConnector Association="QMSModel.FK_Audit_Lookup" />
+        <AssociationConnector Association="QMSModel.FK_AuditItem_Audit" />
+        <AssociationConnector Association="QMSModel.FK_Supplier_CertificationType" />
+        <AssociationConnector Association="QMSModel.FK_Employee_Employee" />
+        <AssociationConnector Association="QMSModel.FK_Employee_Lookup" />
+        <AssociationConnector Association="QMSModel.FK_Category_Lookup" />
+        <AssociationConnector Association="QMSModel.FK_Currency_Lookup" />
+        <AssociationConnector Association="QMSModel.FK_Msds_Lookup" />
+        <AssociationConnector Association="QMSModel.FK_NegotiatedBy_Lookup" />
+        <AssociationConnector Association="QMSModel.FK_Rating_Lookup" />
+        <AssociationConnector Association="QMSModel.FK_Supplier_Lookup" />
+        <AssociationConnector Association="QMSModel.FK_SupplierType_Lookup" />
+        <AssociationConnector Association="QMSModel.FK_Supplier_Supplier" />
+        <EntityTypeShape EntityType="QMSModel.AuditFinding" Width="1.5" PointX="8.25" PointY="17.5" />
+        <EntityTypeShape EntityType="QMSModel.Auditor" Width="1.5" PointX="3.375" PointY="3.125" />
+        <EntityTypeShape EntityType="QMSModel.AuditorContact" Width="1.5" PointX="5.625" PointY="2.625" />
+        <AssociationConnector Association="QMSModel.FK_Audit_Auditor" />
+        <AssociationConnector Association="QMSModel.FK_Audit_AuditorContact" />
+        <AssociationConnector Association="QMSModel.FK_AuditFindings_Audit" />
+        <AssociationConnector Association="QMSModel.FK_AuditFindings_Lookup" />
+        <AssociationConnector Association="QMSModel.FK_AuditorContact_Auditor" />
+        <EntityTypeShape EntityType="QMSModel.LookupType" Width="1.5" PointX="0.75" PointY="8" />
+        <AssociationConnector Association="QMSModel.FK_Lookup_LookupType" />
+        <EntityTypeShape EntityType="QMSModel.CertificationElement" Width="1.5" PointX="6" PointY="28.625" />
+        <EntityTypeShape EntityType="QMSModel.Department" Width="1.5" PointX="0.75" PointY="3.75" />
+        <AssociationConnector Association="QMSModel.FK_Cell_Department" />
+        <AssociationConnector Association="QMSModel.FK_CertificationElement_CertificationElement" />
+        <AssociationConnector Association="QMSModel.FK_CertificationElement_CertificationType" />
+        <InheritanceConnector EntityType="QMSModel.SupplierAudit" />
+        <InheritanceConnector EntityType="QMSModel.ProcessAudit" />
+        <EntityTypeShape EntityType="QMSModel.SystemAudit" Width="1.5" PointX="5.25" PointY="18.625" />
+        <InheritanceConnector EntityType="QMSModel.SystemAudit" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
